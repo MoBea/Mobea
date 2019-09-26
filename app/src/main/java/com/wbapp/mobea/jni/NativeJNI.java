@@ -6,6 +6,9 @@ package com.wbapp.mobea.jni;
  * @description
  */
 public class NativeJNI {
+    static {
+        System.loadLibrary("native-lib");
+    }
 
     private static volatile NativeJNI instance;
     private NativeJNI() {}
@@ -20,8 +23,7 @@ public class NativeJNI {
         return instance;
     }
 
-    static {
-        System.loadLibrary("native-lib");
-    }
     public native String stringFromJNI();
+
+    public native String stringFromNameJNI(String name);
 }
