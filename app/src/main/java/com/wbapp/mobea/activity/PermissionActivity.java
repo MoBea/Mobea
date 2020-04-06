@@ -6,6 +6,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import com.wbapp.mobea.R;
 import com.wbapp.mobea.activity.MainActivity;
+import com.wbapp.mobea.activity.designmode.mvc.MVCActivity;
+import com.wbapp.mobea.activity.designmode.mvp.activity.MVPActivity;
+import com.wbapp.mobea.activity.designmode.mvvm.MVVMActivity;
 import com.wbapp.mobea.base.BaseActivity;
 import com.wbapp.mobea.utils.Loger;
 import com.wbapp.mobea.utils.T;
@@ -26,14 +29,19 @@ public class PermissionActivity extends BaseActivity implements EasyPermissions.
         super.onCreate(savedInstanceState);
         //所要申请的权限
         String[] perms = {
-                Manifest.permission.CAMERA,
+                //模拟器无法获取此权限
+               // Manifest.permission.CAMERA,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE
         };
 
         if (EasyPermissions.hasPermissions(this, perms)) {//检查是否获取该权限
             Loger.i("已获取权限");
-            startActivity(new Intent(this, MainActivity.class));
+           // startActivity(new Intent(this, MainActivity.class));
+           // startActivity(new Intent(this, MVCActivity.class));
+           // startActivity(new Intent(this, MVPActivity.class));
+            startActivity(new Intent(this, MVVMActivity.class));
+            finish();
         } else {
             //第二个参数是被拒绝后再次申请该权限的解释
             //第三个参数是请求码

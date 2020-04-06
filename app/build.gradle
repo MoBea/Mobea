@@ -12,11 +12,12 @@ android {
         targetSdkVersion 28//项目的目标版本
         versionCode 1//版本号
         versionName "1.0"//版本名称
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"//表明要使用AndroidJUnitRunner进行单元测试
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//表明要使用AndroidJUnitRunner进行单元测试
         externalNativeBuild {
             cmake {
                 cppFlags ""
-                abiFilters "armeabi-v7a","arm64-v8a"//CPU类型 [arm64-v8a, armeabi-v7a, x86, x86_64]
+                abiFilters "armeabi-v7a", "x86_64" //CPU类型 [arm64-v8a, armeabi-v7a, x86, x86_64]
             }
         }
     }
@@ -25,6 +26,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    //启用dataBinding  MVVM模式
+    dataBinding{
+        enabled true
     }
     externalNativeBuild {
         cmake {
@@ -48,4 +53,7 @@ dependencies {
     // Glide's OkHttp Integration
     //implementation 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
     implementation 'com.squareup.okhttp3:okhttp:3.8.0'
+    //butterKnife
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
